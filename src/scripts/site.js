@@ -10,37 +10,85 @@ const gallery = document.querySelector("[data-gallery]");
 if (gallery) {
   const viewport = gallery.querySelector(".gallery-viewport");
   const track = gallery.querySelector(".gallery-track");
-  const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
   const caption = gallery.querySelector(".gallery-caption");
   const thumbs = Array.from(gallery.querySelectorAll(".gallery-thumbs button"));
+  const originalSlides = Array.from(gallery.querySelectorAll(".gallery-slide"));
+  const slideCount = originalSlides.length;
+  let slides = originalSlides;
   let index = 0;
+  let physicalIndex = 0;
 
-  function show(nextIndex) {
-    index = (nextIndex + slides.length) % slides.length;
-    const thumb = thumbs[index];
-    caption.textContent = thumb.dataset.title || thumb.dataset.alt;
-    slides.forEach((slide, slideIndex) => {
-      const distance = Math.min(
-        Math.abs(slideIndex - index),
-        slides.length - Math.abs(slideIndex - index)
-      );
-      slide.classList.toggle("active", slideIndex === index);
-      slide.classList.toggle("near", distance === 1);
-    });
-    thumbs.forEach((button, buttonIndex) => button.classList.toggle("active", buttonIndex === index));
-    const slide = slides[index];
+  if (slideCount > 1) {
+    const firstClone = originalSlides[0].cloneNode(true);
+    const lastClone = originalSlides[slideCount - 1].cloneNode(true);
+    firstClone.dataset.clone = "true";
+    lastClone.dataset.clone = "true";
+    track.insertBefore(lastClone, originalSlides[0]);
+    track.appendChild(firstClone);
+    slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
+    physicalIndex = 1;
+  }
+
+  function positionTrack(animate = true) {
+    const slide = slides[physicalIndex];
     const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0");
     const step = slide.offsetWidth + gap;
-    const offset = (viewport.offsetWidth / 2) - (slide.offsetWidth / 2) - (index * step);
+    const offset = (viewport.offsetWidth / 2) - (slide.offsetWidth / 2) - (physicalIndex * step);
+    track.style.transition = animate ? "" : "none";
     track.style.transform = `translateX(${offset}px)`;
+    if (!animate) {
+      requestAnimationFrame(() => {
+        track.style.transition = "";
+      });
+    }
+  }
+
+  function updateState() {
+    const thumb = thumbs[index];
+    caption.textContent = thumb.dataset.title;
+    slides.forEach((slide, slideIndex) => {
+      slide.classList.toggle("active", slideIndex === physicalIndex);
+      slide.classList.toggle("near", Math.abs(slideIndex - physicalIndex) === 1);
+    });
+    thumbs.forEach((button, buttonIndex) => button.classList.toggle("active", buttonIndex === index));
     thumb.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   }
 
-  gallery.querySelector(".gallery-prev")?.addEventListener("click", () => show(index - 1));
-  gallery.querySelector(".gallery-next")?.addEventListener("click", () => show(index + 1));
-  thumbs.forEach((button, buttonIndex) => button.addEventListener("click", () => show(buttonIndex)));
-  window.addEventListener("resize", () => show(index));
-  show(0);
+  function goTo(nextIndex, animate = true) {
+    index = (nextIndex + slideCount) % slideCount;
+    physicalIndex = slideCount > 1 ? index + 1 : index;
+    updateState();
+    positionTrack(animate);
+  }
+
+  function move(delta) {
+    if (slideCount < 2) return;
+    index = (index + delta + slideCount) % slideCount;
+    physicalIndex += delta;
+    updateState();
+    positionTrack(true);
+  }
+
+  track.addEventListener("transitionend", () => {
+    if (slideCount < 2) return;
+    if (physicalIndex === 0) {
+      physicalIndex = slideCount;
+      positionTrack(false);
+      updateState();
+    } else if (physicalIndex === slideCount + 1) {
+      physicalIndex = 1;
+      positionTrack(false);
+      updateState();
+    }
+  });
+
+  gallery.querySelector(".gallery-prev")?.addEventListener("click", () => move(-1));
+  gallery.querySelector(".gallery-next")?.addEventListener("click", () => move(1));
+  gallery.querySelector(".gallery-thumb-prev")?.addEventListener("click", () => move(-1));
+  gallery.querySelector(".gallery-thumb-next")?.addEventListener("click", () => move(1));
+  thumbs.forEach((button, buttonIndex) => button.addEventListener("click", () => goTo(buttonIndex)));
+  window.addEventListener("resize", () => positionTrack(false));
+  goTo(0, false);
 }
 
 document.querySelector("[data-menu-tabs]")?.addEventListener("click", (event) => {

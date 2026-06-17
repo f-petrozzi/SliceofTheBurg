@@ -184,22 +184,18 @@ function homePage() {
 
       ${quote(0)}
 
-      <section class="statement">
-        <h2><span aria-hidden="true">&ldquo;</span>Keeping St. Pete weird, fed, and extra cheesy.<span aria-hidden="true">&rdquo;</span></h2>
-      </section>
-
       <section class="club-section">
         ${sectionHead("Slice of The Burg Rewards", "The first rule about Slice Club is,", "you tell everyone about it!")}
         <div class="club-card">
-          <img src="${attr(sliceClubImage)}" alt="Slice Club pizza illustration" width="450" height="360">
+          <img src="${attr(sliceClubImage)}" alt="Slice Club pizza illustration" width="450" height="300">
           <div>
             <ul>
               <li>Eat Pizza</li>
               <li>Earn Points</li>
               <li>Get Cool Rewards</li>
             </ul>
+            <a class="button button-dark" href="${attr(site.rewardsUrl)}" target="_blank" rel="noopener">Join The Club</a>
           </div>
-          <a class="button button-dark" href="${attr(site.rewardsUrl)}" target="_blank" rel="noopener">Join The Club</a>
         </div>
       </section>
 
@@ -207,13 +203,12 @@ function homePage() {
 
       <section class="gift-card-section">
         <div class="gift-card-inner">
+          <p class="kicker">Gift Cards</p>
+          <h2>Give the gift of pizza</h2>
+          <p>Slice of The Burg gift cards are available through Toast for pickup, delivery, birthdays, thank-yous, and future pizza nights.</p>
+          <p>Purchase online and send a little St. Pete pizza love anytime.</p>
           ${giftCardImage}
-          <div>
-            <p class="kicker">Gift Cards</p>
-            <h2>Give the gift of pizza</h2>
-            <p>Slice of The Burg gift cards are available through Toast for pickup, delivery, birthdays, thank-yous, and future pizza nights.</p>
             <a class="button" href="${attr(site.giftCardUrl)}" target="_blank" rel="noopener">Purchase</a>
-          </div>
         </div>
       </section>
 
@@ -229,8 +224,12 @@ function homePage() {
           <button type="button" class="gallery-next" aria-label="Next favorite">&#8250;</button>
         </div>
         <p class="gallery-caption">${escapeHtml(firstFave.title)}</p>
-        <div class="gallery-thumbs">
-          ${faveThumbs}
+        <div class="gallery-thumb-controls">
+          <button type="button" class="gallery-thumb-prev" aria-label="Previous favorite thumbnail">&#8249;</button>
+          <div class="gallery-thumbs">
+            ${faveThumbs}
+          </div>
+          <button type="button" class="gallery-thumb-next" aria-label="Next favorite thumbnail">&#8250;</button>
         </div>
       </section>
 
