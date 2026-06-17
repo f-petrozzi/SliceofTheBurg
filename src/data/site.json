@@ -24,7 +24,8 @@
   "social": [
     { "label": "Facebook", "url": "https://www.facebook.com/408548043032658", "icon": "/assets/icons/facebook.svg" },
     { "label": "Instagram", "url": "https://www.instagram.com/sliceoftheburg", "icon": "/assets/icons/instagram.svg" },
-    { "label": "Yelp", "url": "https://www.yelp.com/biz/slice-of-the-burg-st-petersburg?osq=slice+of+the+burg", "icon": "/assets/icons/yelp.svg" }
+    { "label": "Yelp", "url": "https://www.yelp.com/biz/slice-of-the-burg-st-petersburg?osq=slice+of+the+burg", "icon": "/assets/icons/yelp.svg" },
+    { "label": "Tripadvisor", "url": "https://www.tripadvisor.com/Search?q=Slice%20of%20The%20Burg%20St.%20Petersburg%20FL", "icon": "/assets/brand/tripadvisor.png" }
   ],
   "nav": [
     { "label": "Home", "url": "/" },

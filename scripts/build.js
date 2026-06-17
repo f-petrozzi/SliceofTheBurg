@@ -8,6 +8,7 @@ const dist = path.join(root, "dist");
 const site = readJson("site.json");
 const pages = readJson("pages.json");
 const menus = readJson("menus.json");
+const gallery = readJson("gallery.json");
 
 function readJson(file) {
   return JSON.parse(fs.readFileSync(path.join(src, "data", file), "utf8"));
@@ -29,6 +30,14 @@ function attr(value = "") {
 function cleanDir(dir) {
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
+}
+
+function publicAssetPathToSource(publicPath) {
+  return path.join(src, publicPath.replace(/^\//, ""));
+}
+
+function assetExists(publicPath) {
+  return fs.existsSync(publicAssetPathToSource(publicPath));
 }
 
 function copyDir(from, to) {
@@ -80,6 +89,7 @@ function header(page) {
 
 function footer() {
   const socials = site.social
+    .filter((item) => assetExists(item.icon))
     .map((item) => `<a href="${attr(item.url)}" target="_blank" rel="noopener"><img src="${attr(item.icon)}" alt="${attr(item.label)}" width="28" height="28"></a>`)
     .join("");
   const links = site.nav.map((item) => `<a href="${attr(item.url)}">${escapeHtml(item.label)}</a>`).join("");
@@ -110,13 +120,45 @@ function sectionHead(kicker, title, text = "") {
 function homePage() {
   const hours = site.hours.map((row) => `<div><span>${escapeHtml(row.label)}</span><strong>${escapeHtml(row.value)}</strong></div>`).join("");
   const socials = site.social
+    .filter((item) => assetExists(item.icon))
     .map((item) => `<a href="${attr(item.url)}" target="_blank" rel="noopener"><img src="${attr(item.icon)}" alt="${attr(item.label)}" width="32" height="32"></a>`)
     .join("");
+  const heroImage = assetExists("/assets/brand/hero-banner.png") ? "/assets/brand/hero-banner.png" : "/assets/hero-pizza-spread.png";
+  const galleryItems = gallery
+    .filter((item) => assetExists(item.large))
+    .map((item) => ({ ...item, thumb: assetExists(item.thumb) ? item.thumb : item.large }));
+  const faves = galleryItems.length ? galleryItems : [
+    {
+      title: "Antipasto Salad",
+      large: "/assets/st-pete-faves-salad.png",
+      thumb: "/assets/st-pete-faves-salad.png",
+      alt: "Antipasto salad in St. Petersburg Florida"
+    },
+    {
+      title: "Pizza Spread",
+      large: "/assets/hero-pizza-spread.png",
+      thumb: "/assets/hero-pizza-spread.png",
+      alt: "Pizza spread from Slice of The Burg"
+    },
+    {
+      title: "Chicken Wings",
+      large: "/assets/st-pete-faves-wings.png",
+      thumb: "/assets/st-pete-faves-wings.png",
+      alt: "Chicken wings from Slice of The Burg"
+    }
+  ];
+  const firstFave = faves[0];
+  const faveThumbs = faves
+    .map((item) => `<button type="button" data-src="${attr(item.large)}" data-alt="${attr(item.alt)}" data-title="${attr(item.title)}" aria-label="Show ${attr(item.title)}"><img src="${attr(item.thumb)}" alt=""></button>`)
+    .join("");
+  const giftCardImage = assetExists("/assets/promos/gift-card.png")
+    ? `<img src="/assets/promos/gift-card.png" alt="Slice of The Burg gift card" width="640" height="420">`
+    : "";
 
   return `
     <main>
       <section class="hero" aria-label="St. Pete's favorite pizza">
-        <img class="hero-image" src="/assets/hero-pizza-spread.png" alt="Pizza, salad and appetizers from Slice of The Burg">
+        <img class="hero-image" src="${attr(heroImage)}" alt="Pizza, salad and appetizers from Slice of The Burg">
         <div class="hero-panel">
           <p class="hero-phone">${escapeHtml(site.phoneDisplay)}</p>
           <h1>St. Pete's Favorite Pizza</h1>
@@ -157,18 +199,28 @@ function homePage() {
 
       ${quote(1)}
 
+      <section class="gift-card-section">
+        <div class="gift-card-inner">
+          ${giftCardImage}
+          <div>
+            <p class="kicker">Gift Cards</p>
+            <h2>Give the gift of pizza</h2>
+            <p>Slice of The Burg gift cards are available through Toast for pickup, delivery, birthdays, thank-yous, and future pizza nights.</p>
+            <a class="button" href="${attr(site.giftCardUrl)}" target="_blank" rel="noopener">Purchase</a>
+          </div>
+        </div>
+      </section>
+
       <section class="faves" data-gallery>
         ${sectionHead("", "St. Pete Faves")}
         <div class="gallery-stage">
           <button type="button" class="gallery-prev" aria-label="Previous favorite">&#8249;</button>
-          <img src="/assets/st-pete-faves-salad.png" alt="Antipasto salad in St. Petersburg Florida">
+          <img src="${attr(firstFave.large)}" alt="${attr(firstFave.alt)}">
           <button type="button" class="gallery-next" aria-label="Next favorite">&#8250;</button>
         </div>
-        <p class="gallery-caption">Antipasto Salad in St. Petersburg Florida</p>
+        <p class="gallery-caption">${escapeHtml(firstFave.title)}</p>
         <div class="gallery-thumbs">
-          <button type="button" data-src="/assets/st-pete-faves-salad.png" data-alt="Antipasto salad in St. Petersburg Florida" aria-label="Show antipasto salad"><img src="/assets/st-pete-faves-salad.png" alt=""></button>
-          <button type="button" data-src="/assets/hero-pizza-spread.png" data-alt="Pizza spread from Slice of The Burg" aria-label="Show pizza spread"><img src="/assets/hero-pizza-spread.png" alt=""></button>
-          <button type="button" data-src="/assets/st-pete-faves-wings.png" data-alt="Chicken wings from Slice of The Burg" aria-label="Show wings"><img src="/assets/st-pete-faves-wings.png" alt=""></button>
+          ${faveThumbs}
         </div>
       </section>
 

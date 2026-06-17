@@ -398,6 +398,34 @@ h3 {
   color: var(--red);
 }
 
+.gift-card-section {
+  padding: 64px 18px;
+  background: var(--soft);
+}
+
+.gift-card-inner {
+  display: grid;
+  grid-template-columns: minmax(260px, 460px) minmax(0, 1fr);
+  align-items: center;
+  gap: 42px;
+  width: min(980px, 100%);
+  margin: 0 auto;
+}
+
+.gift-card-inner img {
+  width: 100%;
+  border-radius: 8px;
+  box-shadow: var(--shadow);
+}
+
+.gift-card-inner h2 {
+  margin-bottom: 14px;
+}
+
+.gift-card-inner p:not(.kicker) {
+  color: var(--muted);
+}
+
 .faves {
   padding: 56px 0 70px;
 }
@@ -710,6 +738,7 @@ textarea:focus {
   }
 
   .club-card,
+  .gift-card-inner,
   .visit-grid,
   .menu-list {
     grid-template-columns: 1fr;
@@ -717,6 +746,10 @@ textarea:focus {
 
   .club-card {
     gap: 22px;
+    text-align: center;
+  }
+
+  .gift-card-inner {
     text-align: center;
   }
 

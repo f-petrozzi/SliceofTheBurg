@@ -18,7 +18,7 @@ if (gallery) {
     const thumb = thumbs[index];
     image.src = thumb.dataset.src;
     image.alt = thumb.dataset.alt;
-    caption.textContent = thumb.dataset.alt;
+    caption.textContent = thumb.dataset.title || thumb.dataset.alt;
     thumbs.forEach((button, buttonIndex) => button.classList.toggle("active", buttonIndex === index));
   }
 
