@@ -305,7 +305,8 @@ function render(page) {
   <meta name="twitter:title" content="${attr(page.title)}">
   <meta name="twitter:description" content="${attr(page.description)}">
   <meta name="twitter:image" content="${attr(site.baseUrl)}/assets/hero-pizza-spread.png">
-  <link rel="icon" href="/assets/slice-logo.png">
+  <link rel="icon" type="image/png" href="/assets/slice-tab.png">
+  <link rel="apple-touch-icon" href="/assets/slice-tab.png">
   <link rel="stylesheet" href="/styles/site.css">
   ${structuredData(page)}
 </head>

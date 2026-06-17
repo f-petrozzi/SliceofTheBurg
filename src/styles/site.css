@@ -562,13 +562,13 @@ textarea:focus {
 
 .menu-tabs {
   position: sticky;
-  top: 106px;
+  top: 90px;
   z-index: 20;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
   gap: 8px;
-  padding: 16px 0;
+  padding: 8px 0;
   background: rgba(255, 255, 255, .96);
 }
 

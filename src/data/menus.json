@@ -80,7 +80,7 @@
         ]
       },
       {
-        "title": "Sandwiches, Cheesesteaks and Wraps",
+        "title": "Sandwiches",
         "items": [
           { "name": "Italian Hero", "price": "$11.99", "description": "Ham, capicola, pepperoni, provolone, salami and Italian dressing." },
           { "name": "Ham and Salami", "price": "$10.99", "description": "Ham, salami and American cheese." },
@@ -89,12 +89,6 @@
           { "name": "Meatball Parmigiana", "price": "", "description": "Toasted sandwich." },
           { "name": "Eggplant Parmigiana", "price": "", "description": "Vegetarian toasted sandwich." },
           { "name": "Sausage Parmigiana", "price": "", "description": "Toasted sandwich." },
-          { "name": "Philly Cheese Steak or Chicken", "price": "", "description": "Extra toppings $0.75 each. Add extra steak or chicken for $3.99." },
-          { "name": "Philly Steak or Chicken Heroes", "price": "$13.49", "description": "Lettuce, onions, tomatoes and cheese." },
-          { "name": "Loaded Philly Steak or Chicken", "price": "", "description": "Onions, green peppers, mushrooms and cheese." },
-          { "name": "Buffalo Chicken Philly", "price": "", "description": "Mild, medium or hot sauce with cheese and blue cheese or ranch." },
-          { "name": "Pizza Philly", "price": "", "description": "Pizza sauce and mozzarella baked in the oven." },
-          { "name": "Build a Burger", "price": "$14.99", "description": "Choice of four regular toppings and toasted bun. Served with fries." },
           { "name": "Wraps", "price": "$10.49", "description": "Choice of flour or spinach wrap." },
           { "name": "Chicken Caesar Wrap", "price": "", "description": "Romaine, shredded parmesan, Caesar dressing and grilled, fried or blackened chicken." },
           { "name": "The Greek Wrap", "price": "", "description": "Lettuce, tomatoes, onions, grilled chicken or steak, Greek dressing, kalamata olives and feta." },
@@ -102,21 +96,49 @@
         ]
       },
       {
-        "title": "Entrees, Beverages and Desserts",
+        "title": "Philly Cheesesteaks",
+        "description": "Extra toppings $0.75 each. Add extra steak or chicken for $3.99.",
+        "items": [
+          { "name": "Philly Cheese Steak or Chicken", "price": "", "description": "" },
+          { "name": "Philly Steak or Chicken Heroes", "price": "$13.49", "description": "Lettuce, onions, tomatoes and cheese." },
+          { "name": "Loaded Philly Steak or Chicken", "price": "", "description": "Onions, green peppers, mushrooms and cheese." },
+          { "name": "Buffalo Chicken Philly", "price": "", "description": "Mild, medium or hot sauce with cheese and blue cheese or ranch." },
+          { "name": "Pizza Philly", "price": "", "description": "Pizza sauce and mozzarella baked in the oven." },
+          { "name": "Build a Burger", "price": "$14.99", "description": "Choice of four regular toppings and toasted bun. Served with fries." }
+        ]
+      },
+      {
+        "title": "Entrees",
         "items": [
           { "name": "Spaghetti or Ziti", "price": "", "description": "All dinners served with garlic knots. Add a side salad for $3.99 or side Caesar for $4.49." },
           { "name": "Baked Spaghetti", "price": "", "description": "Mozzarella added and baked." },
           { "name": "Baked Ziti", "price": "", "description": "Mozzarella and ricotta added and baked." },
           { "name": "Alfredo", "price": "", "description": "Pasta with housemade Alfredo sauce and choice of protein." },
           { "name": "Housemade Meat Lasagna", "price": "", "description": "Pork and beef with ricotta and mozzarella." },
-          { "name": "Eggplant Parmigiana", "price": "", "description": "Made with spaghetti or penne." },
+          { "name": "Eggplant Parmigiana", "price": "", "description": "Made with spaghetti or penne." }
+        ]
+      },
+      {
+        "title": "Beverages",
+        "items": [
           { "name": "Pepsi Products - 2 Liter", "price": "$4.79", "description": "Pepsi, Diet Pepsi, Dr. Pepper, Mt. Dew, Sierra Mist, Mug Root Beer and Orange Crush." },
           { "name": "Bottled Water", "price": "$2.99", "description": "" },
           { "name": "16 oz Bottles", "price": "$3.69", "description": "Pepsi, Mt. Dew and Diet Coke." },
+          { "name": "Beer and Wine", "price": "", "description": "Budweiser, Bud Light, Shock Top, Corona, Michelob Ultra, Modelo, Pinot Grigio and Cabernet Sauvignon." }
+        ]
+      },
+      {
+        "title": "Desserts",
+        "description": "Add raspberry, strawberry, chocolate drizzle, extra powdered sugar or Nutella drizzle for an additional charge.",
+        "items": [
           { "name": "CinnaBites", "price": "", "description": "Fried dough with cinnamon sugar and homemade icing." },
           { "name": "Double Chocolate Brownie", "price": "$6.49", "description": "" },
           { "name": "Chocolate Cannoli", "price": "$4.49", "description": "" },
           { "name": "NY Style Cheesecake", "price": "$5.49", "description": "" },
+          { "name": "Carrot Cake", "price": "", "description": "" },
+          { "name": "Tiramisu", "price": "", "description": "" },
+          { "name": "Sea Salt Cheesecake", "price": "", "description": "Rich salted caramel cheesecake." },
+          { "name": "Reesie's Peanut Butter Pie", "price": "", "description": "Gluten free." },
           { "name": "Brookie", "price": "$2.69", "description": "Cookie mixed with brownie." }
         ]
       }
