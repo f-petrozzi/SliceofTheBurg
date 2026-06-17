@@ -1,0 +1,70 @@
+[
+  {
+    "route": "/",
+    "template": "home",
+    "title": "Slice of The Burg: Great Pizza in St. Pete",
+    "description": "Slice of the Burg offers NY style pizza, vegan options, and more in St. Petersburg, FL. Order online for delivery or take-out.",
+    "heading": "St. Pete's Favorite Pizza"
+  },
+  {
+    "route": "/menu/",
+    "template": "menu",
+    "menuKey": "main",
+    "title": "Pizza, Cheesesteaks, chicken wings & more in St. Petersburg, FL",
+    "description": "St. Pete's number one place for pizza, cheesesteaks, chicken wings, and so much more. Take out, delivery or dine in.",
+    "heading": "Pizza, Cheesesteaks, Wings & More",
+    "intro": "A balanced diet is a Slice in both hands."
+  },
+  {
+    "route": "/vegan-menu/",
+    "template": "menu",
+    "menuKey": "vegan",
+    "title": "Slice of The Burg - Vegan Food, Vegan Friendly Menu, Vegan",
+    "description": "Locally owned pizza restaurant offering a robust menu including vegan pizza, vegan calzone, vegan chicken Parm and more.",
+    "heading": "Vegan Friendly Menu",
+    "intro": "One of the largest vegan friendly pizza menus in the St. Petersburg area."
+  },
+  {
+    "route": "/catering-menu/",
+    "template": "menu",
+    "menuKey": "catering",
+    "title": "Catering Menu",
+    "description": "Catering trays, salads, sandwiches, entrees, desserts and drinks from Slice of The Burg in St. Petersburg, FL.",
+    "heading": "Catering in Tampa Bay",
+    "intro": "Real friends bring pizza."
+  },
+  {
+    "route": "/healthier-options/",
+    "template": "menu",
+    "menuKey": "healthier",
+    "title": "Healthier Options",
+    "description": "Lower calorie salads, cauliflower crust pizza options, wraps and lettuce wrap burger choices from Slice of The Burg.",
+    "heading": "Healthier Options",
+    "intro": "Fresh salads, cauliflower crust, wraps and lower calorie choices."
+  },
+  {
+    "route": "/top-fans/",
+    "template": "simple",
+    "title": "Slice of The Burg - Top Fans on Facebook, Facebook Top Fans, Our Top Fans",
+    "description": "Each month Slice of The Burg gives back to Facebook Top Fans with an opportunity to win an awesome prize.",
+    "heading": "Slice of The Burg's Facebook Top Fans",
+    "body": [
+      "Every month our Top Fans on Facebook will have the opportunity to win something awesome from Slice of The Burg.",
+      "Facebook automatically selects Top Fans based on their interaction with business pages. You can become a Top Fan of Slice of The Burg by liking and sharing our posts, commenting and engaging on posts, and by sharing your own photos and videos with us.",
+      "Facebook sends a notification of Top Fan status to your Facebook account. We do not pick and choose Top Fans.",
+      "No purchase necessary. No cash value. Must like us on Facebook."
+    ],
+    "ctaLabel": "Connect With Us On Facebook",
+    "ctaUrl": "https://www.facebook.com/408548043032658"
+  },
+  {
+    "route": "/updates-and-events/",
+    "template": "simple",
+    "title": "Updates and Events",
+    "description": "Stay updated with the latest updates and events at Slice of The Burg, your go-to for St. Petersburg pizza and online ordering.",
+    "heading": "Updates and Events",
+    "body": ["Stay tuned for the latest Slice of The Burg updates, events, menu notes and specials."],
+    "ctaLabel": "Start Your Online Order",
+    "ctaUrl": "ORDER_URL"
+  }
+]

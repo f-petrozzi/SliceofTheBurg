@@ -1,0 +1,242 @@
+{
+  "main": {
+    "note": "Vegan friendly, vegetarian friendly and gluten free options are marked in item descriptions where available. Prices are subject to change.",
+    "sections": [
+      {
+        "title": "Starters",
+        "items": [
+          { "name": "The Sampler", "price": "$14.99", "description": "Your choice of 3 appetizers." },
+          { "name": "Garlic Knots", "price": "(6) $5.99 / (12) $9.59", "description": "Vegetarian. Served with marinara." },
+          { "name": "Onion Rings", "price": "$6.99", "description": "Vegetarian. Served with zesty sauce." },
+          { "name": "Mozzarella Sticks", "price": "$8.49", "description": "Vegetarian. Seven pieces." },
+          { "name": "French Fries or Tater Tots", "price": "$4.99", "description": "Vegetarian." },
+          { "name": "Cheese Fries or Tots", "price": "$7.99", "description": "Vegetarian." },
+          { "name": "Loaded Fries or Tots", "price": "$9.49", "description": "Cheese, bacon, jalapenos and ranch." },
+          { "name": "Jalapeno Poppers", "price": "", "description": "Vegetarian. Cheddar." },
+          { "name": "Fried Mushrooms", "price": "", "description": "Served with ranch or zesty sauce." },
+          { "name": "Vegan Garlic Cheesy Bread", "price": "$12.49", "description": "Served with house made marinara." },
+          { "name": "Garlic Cheesy Bread", "price": "$14.39", "description": "" },
+          { "name": "Philly Steak Eggrolls", "price": "$9.99", "description": "Philly steak wrapped in an eggroll, served with zesty sauce." },
+          { "name": "Broccoli Cheese Bites", "price": "", "description": "Breaded, battered and fried with sharp cheddar. Served with housemade ranch." },
+          { "name": "Chicken Nuggets and Fries", "price": "", "description": "Five boneless wings served with french fries." }
+        ]
+      },
+      {
+        "title": "Salads",
+        "description": "All salads served with choice of dressing. Add grilled, fried, buffalo or blackened chicken for $4.49.",
+        "items": [
+          { "name": "Side Salad", "price": "", "description": "Lettuce, tomato, onions and cucumbers." },
+          { "name": "Side Caesar", "price": "$5.49", "description": "Romaine, shredded parmesan cheese and croutons." },
+          { "name": "Garden Salad", "price": "$9.49", "description": "Lettuce, tomato, onions, cucumbers, green peppers, mushrooms and cheddar." },
+          { "name": "Antipasto Salad", "price": "$12.99", "description": "Lettuce, tomato, pepperoncinis, onions, green peppers, black olives, mushrooms, ham, provolone, salami, pepperoni and mozzarella." },
+          { "name": "Caesar Salad", "price": "$11.49", "description": "Romaine, parmesan cheese and croutons." },
+          { "name": "Greek Salad", "price": "", "description": "Lettuce, tomato, onions, cucumbers, green peppers, beets, kalamata olives, pepperoncinis and feta." },
+          { "name": "Crispy Chicken Salad", "price": "$14.49", "description": "Lettuce, tomato, green pepper, cucumber, fried chicken, egg, cheddar and croutons with honey mustard dressing." },
+          { "name": "Buffalo Chicken Salad", "price": "$13.99", "description": "Choice of grilled or fried chicken tossed in buffalo sauce, topped with mozzarella cheese." }
+        ]
+      },
+      {
+        "title": "Wings",
+        "description": "Bone-in or boneless. Sauce choices include mild, medium, hot, BBQ, blackened, garlic parm and Thai chili. Ranch or blue cheese additional $0.75.",
+        "items": [
+          { "name": "6 Wings", "price": "", "description": "" },
+          { "name": "12 Wings", "price": "$17.99", "description": "" },
+          { "name": "24 Wings", "price": "$33.49", "description": "" },
+          { "name": "50 Wings", "price": "$64.49", "description": "" }
+        ]
+      },
+      {
+        "title": "Pizza The Burg",
+        "description": "Large 14 inch and extra large 18 inch pizzas.",
+        "items": [
+          { "name": "Cheese Pizza", "price": "14 inch $14.99 / 18 inch $17.99", "description": "Vegetarian." },
+          { "name": "Pepperoni", "price": "14 inch $16.98 / 18 inch $19.99", "description": "" },
+          { "name": "Supreme", "price": "14 inch $18.99 / 18 inch $23.99", "description": "Pepperoni, sausage, onion, mushroom and green pepper." },
+          { "name": "Meat Lovers", "price": "18 inch $24.99", "description": "Pepperoni, sausage, bacon, ham and meatballs." },
+          { "name": "The Big Kahuna", "price": "14 inch $19.99", "description": "Ricotta base with pineapple, bacon, ham, crushed red pepper and hot honey drizzle." },
+          { "name": "BBQ Chicken", "price": "", "description": "BBQ sauce and grilled chicken." },
+          { "name": "Buffalo Chicken", "price": "", "description": "Buffalo sauce with fried or grilled chicken." },
+          { "name": "Hot Italian", "price": "", "description": "Pepperoni, sausage, hot sauce, fresh garlic, crushed red pepper and basil." },
+          { "name": "Sweet Heat", "price": "", "description": "Pepperoni, ricotta, hot honey and fresh basil." },
+          { "name": "Veggie Lovers", "price": "14 inch $19.49 / 18 inch $24.49", "description": "Onions, green pepper, tomatoes, black olives and mushrooms." },
+          { "name": "Loaded Philly", "price": "14 inch $21.49 / 18 inch $25.49", "description": "White garlic sauce, grilled steak, onions, green peppers, mushrooms, basil and garlic drizzle." },
+          { "name": "The Great White", "price": "", "description": "Vegetarian. Ricotta, spinach and tomatoes." },
+          { "name": "Margherita", "price": "18 inch $23.49", "description": "Vegetarian. Garlic olive oil base, fresh basil and tomatoes." },
+          { "name": "12 inch Cauliflower Crust", "price": "Same price as 14 inch pizzas", "description": "Gluten free." },
+          { "name": "Regular Toppings", "price": "$2.49 each", "description": "Italian sausage, pepperoni, bacon, ham, mushrooms, green pepper, tomatoes, onions, black olives, banana peppers, jalapenos and pineapple." },
+          { "name": "Premium Toppings", "price": "$3.99 each", "description": "Anchovies, meatballs, steak, chicken, spinach, feta, ricotta, ground beef, mozzarella and arugula." },
+          { "name": "Garlic Dipping Sauce", "price": "$0.75", "description": "" }
+        ]
+      },
+      {
+        "title": "Calzone and Stromboli",
+        "description": "Extra toppings same price as pizza toppings.",
+        "items": [
+          { "name": "Calzone", "price": "Half $16.49 / Full $18.99", "description": "Ricotta, mozzarella and one regular topping." },
+          { "name": "Stromboli", "price": "Half $19.99 / Full $24.99", "description": "Mozzarella and one regular topping." },
+          { "name": "Meat Stromboli", "price": "", "description": "Pepperoni, sausage, bacon, ham and meatball." },
+          { "name": "Veggie Stromboli", "price": "Half $19.49 / Full $24.49", "description": "Onions, green peppers, tomatoes, mushrooms and black olives." },
+          { "name": "Steak Stromboli", "price": "Half $21.49 / Full $26.49", "description": "Steak, onions, green peppers and mushrooms." }
+        ]
+      },
+      {
+        "title": "Sandwiches, Cheesesteaks and Wraps",
+        "items": [
+          { "name": "Italian Hero", "price": "$11.99", "description": "Ham, capicola, pepperoni, provolone, salami and Italian dressing." },
+          { "name": "Ham and Salami", "price": "$10.99", "description": "Ham, salami and American cheese." },
+          { "name": "Ham and Cheese", "price": "", "description": "With American cheese." },
+          { "name": "Chicken Parmigiana", "price": "", "description": "Toasted sandwich." },
+          { "name": "Meatball Parmigiana", "price": "", "description": "Toasted sandwich." },
+          { "name": "Eggplant Parmigiana", "price": "", "description": "Vegetarian toasted sandwich." },
+          { "name": "Sausage Parmigiana", "price": "", "description": "Toasted sandwich." },
+          { "name": "Philly Cheese Steak or Chicken", "price": "", "description": "Extra toppings $0.75 each. Add extra steak or chicken for $3.99." },
+          { "name": "Philly Steak or Chicken Heroes", "price": "$13.49", "description": "Lettuce, onions, tomatoes and cheese." },
+          { "name": "Loaded Philly Steak or Chicken", "price": "", "description": "Onions, green peppers, mushrooms and cheese." },
+          { "name": "Buffalo Chicken Philly", "price": "", "description": "Mild, medium or hot sauce with cheese and blue cheese or ranch." },
+          { "name": "Pizza Philly", "price": "", "description": "Pizza sauce and mozzarella baked in the oven." },
+          { "name": "Build a Burger", "price": "$14.99", "description": "Choice of four regular toppings and toasted bun. Served with fries." },
+          { "name": "Wraps", "price": "$10.49", "description": "Choice of flour or spinach wrap." },
+          { "name": "Chicken Caesar Wrap", "price": "", "description": "Romaine, shredded parmesan, Caesar dressing and grilled, fried or blackened chicken." },
+          { "name": "The Greek Wrap", "price": "", "description": "Lettuce, tomatoes, onions, grilled chicken or steak, Greek dressing, kalamata olives and feta." },
+          { "name": "Gyro", "price": "", "description": "Served on a pita with tzatziki, onion, lettuce and tomato." }
+        ]
+      },
+      {
+        "title": "Entrees, Beverages and Desserts",
+        "items": [
+          { "name": "Spaghetti or Ziti", "price": "", "description": "All dinners served with garlic knots. Add a side salad for $3.99 or side Caesar for $4.49." },
+          { "name": "Baked Spaghetti", "price": "", "description": "Mozzarella added and baked." },
+          { "name": "Baked Ziti", "price": "", "description": "Mozzarella and ricotta added and baked." },
+          { "name": "Alfredo", "price": "", "description": "Pasta with housemade Alfredo sauce and choice of protein." },
+          { "name": "Housemade Meat Lasagna", "price": "", "description": "Pork and beef with ricotta and mozzarella." },
+          { "name": "Eggplant Parmigiana", "price": "", "description": "Made with spaghetti or penne." },
+          { "name": "Pepsi Products - 2 Liter", "price": "$4.79", "description": "Pepsi, Diet Pepsi, Dr. Pepper, Mt. Dew, Sierra Mist, Mug Root Beer and Orange Crush." },
+          { "name": "Bottled Water", "price": "$2.99", "description": "" },
+          { "name": "16 oz Bottles", "price": "$3.69", "description": "Pepsi, Mt. Dew and Diet Coke." },
+          { "name": "CinnaBites", "price": "", "description": "Fried dough with cinnamon sugar and homemade icing." },
+          { "name": "Double Chocolate Brownie", "price": "$6.49", "description": "" },
+          { "name": "Chocolate Cannoli", "price": "$4.49", "description": "" },
+          { "name": "NY Style Cheesecake", "price": "$5.49", "description": "" },
+          { "name": "Brookie", "price": "$2.69", "description": "Cookie mixed with brownie." }
+        ]
+      }
+    ]
+  },
+  "vegan": {
+    "note": "Vegan friendly menu items and prices from the current live site. Prices are subject to change.",
+    "sections": [
+      {
+        "title": "Vegan Appetizers",
+        "items": [
+          { "name": "Vegan Garlic Knots", "price": "(6) $5.99 / (12) $8.49", "description": "Made with vegan garlic butter, vegan cheese and served with vegan friendly pasta sauce." },
+          { "name": "Vegan Cheesey Bread", "price": "$12.99", "description": "Vegan garlic oil topped with vegan cheese." }
+        ]
+      },
+      {
+        "title": "Vegan Pizza",
+        "description": "14 inch large and 18 inch extra large. Made with housemade vegan pasta sauce.",
+        "items": [
+          { "name": "Vegan Cheese Pizza", "price": "14 inch $18.49 / 18 inch $22.99", "description": "Pasta sauce and vegan cheese." },
+          { "name": "Vegan Pepperoni Pizza", "price": "14 inch $20.99 / 18 inch $26.49", "description": "Pasta sauce, vegan cheese and vegan pepperoni." },
+          { "name": "Vegan Margherita Pizza", "price": "14 inch $22.99 / 18 inch $27.99", "description": "Garlic vegan oil, basil, tomato and vegan cheese." },
+          { "name": "Vegan Veggie Pizza", "price": "", "description": "Onion, green peppers, tomato, black olives, mushroom, pasta sauce and vegan cheese." },
+          { "name": "Vegan White Pizza", "price": "14 inch $24.99", "description": "Vegan ricotta, spinach, tomatoes and vegan cheese." },
+          { "name": "Vegan Buffalo Chicken Pizza", "price": "14 inch $23.99", "description": "Vegan buffalo sauce, vegan chicken and vegan cheese." },
+          { "name": "Vegan Loaded Philly Pizza", "price": "14 inch $24.49 / 18 inch $29.49", "description": "Pasta sauce, green peppers, mushroom, onion and vegan Philly steak." },
+          { "name": "Regular Topping", "price": "$2.99 each", "description": "Mushroom, green peppers, black olives, basil, pasta sauce, banana pepper, jalapeno, pineapple, vegan sausage and vegan cheese." },
+          { "name": "Premium Toppings", "price": "$4.49 each", "description": "Spinach, arugula, vegan ricotta and vegan pepperoni." },
+          { "name": "Vegan Sausage Topping", "price": "$5.99", "description": "" }
+        ]
+      },
+      {
+        "title": "Vegan Calzones and Strombolis",
+        "items": [
+          { "name": "Half Vegan Calzone", "price": "$23.49", "description": "Vegan friendly calzone." },
+          { "name": "Whole Vegan Calzone", "price": "$27.99", "description": "" },
+          { "name": "Half Vegan Stromboli", "price": "", "description": "Vegan friendly stromboli." },
+          { "name": "Whole Vegan Stromboli", "price": "", "description": "" }
+        ]
+      },
+      {
+        "title": "Vegan Sandwiches, Entrees and Desserts",
+        "items": [
+          { "name": "Half Vegan Philly", "price": "$8.99", "description": "" },
+          { "name": "Whole Vegan Philly", "price": "$14.99", "description": "" },
+          { "name": "Vegan Chicken Parm Dinner", "price": "$16.99", "description": "" },
+          { "name": "Vegan CinnaBites", "price": "$7.99", "description": "Vegan oil, cinnamon, sugar and housemade vegan icing made with almond milk." }
+        ]
+      }
+    ]
+  },
+  "catering": {
+    "note": "Each half pan tray serves between 10 and 12 guests unless otherwise noted. Plates, napkins and cutlery available upon request. Prices are subject to change.",
+    "sections": [
+      {
+        "title": "Salads",
+        "items": [
+          { "name": "Garden Salad", "price": "$30.99", "description": "" },
+          { "name": "Antipasto Salad", "price": "$44.99", "description": "" },
+          { "name": "Fried Chicken Salad", "price": "", "description": "" },
+          { "name": "Greek Salad", "price": "", "description": "" },
+          { "name": "Caesar Salad", "price": "$29.99", "description": "" }
+        ]
+      },
+      {
+        "title": "Sandwich Platters",
+        "description": "Feeds 8 to 10 guests.",
+        "items": [
+          { "name": "Italian Heroes", "price": "$49.99", "description": "Ham, capicola, salami, pepperoni and provolone." },
+          { "name": "Assorted Platter", "price": "", "description": "Assortment of ham and cheese, ham and salami, and Italian heroes." }
+        ]
+      },
+      {
+        "title": "Pasta and Entrees",
+        "items": [
+          { "name": "Meat Lasagna", "price": "$58.99", "description": "With beef and pork." },
+          { "name": "Baked Ziti with Ricotta", "price": "", "description": "" },
+          { "name": "Chicken Parmigiana with Pasta", "price": "$55.99", "description": "" },
+          { "name": "Spaghetti with Meatballs", "price": "", "description": "" },
+          { "name": "Vegan Chicken Parm", "price": "$74.99", "description": "" }
+        ]
+      },
+      {
+        "title": "Sides, Desserts and Beverages",
+        "items": [
+          { "name": "Half Pan of Garlic Knots", "price": "$15.99", "description": "" },
+          { "name": "Half Pan Italian Meatballs", "price": "", "description": "" },
+          { "name": "Half Pan Italian Sausage", "price": "", "description": "" },
+          { "name": "Vegan Garlic Knots", "price": "$19.99", "description": "" },
+          { "name": "Assorted Brownies", "price": "$45.99", "description": "" },
+          { "name": "1 Dozen Mini Cannolis", "price": "$28.99", "description": "Chocolate covered minis." },
+          { "name": "Half Pan CinnaKnots", "price": "$24.99", "description": "Cinnamon, sugar and house-made icing." },
+          { "name": "Pepsi Products", "price": "", "description": "2-liters of Pepsi, Diet Pepsi, Mt. Dew, Dr Pepper, Sierra Mist, Mug Root Beer and Orange Crush." },
+          { "name": "Bottled Drinks", "price": "", "description": "20 oz bottled water, Pepsi, Mt. Dew and Diet Pepsi." }
+        ]
+      }
+    ]
+  },
+  "healthier": {
+    "note": "These are lower calorie menu options, not low or no calorie.",
+    "sections": [
+      {
+        "title": "Salads",
+        "description": "Add grilled chicken for a lower calorie salad.",
+        "items": [
+          { "name": "Side Salad", "price": "$4.49", "description": "Lettuce, tomato, onions and cucumbers." },
+          { "name": "Garden Salad", "price": "$8.99", "description": "Lettuce, tomato, onions, cucumbers, green peppers, mushrooms and cheddar." },
+          { "name": "Greek Salad", "price": "$12.99", "description": "Lettuce, tomato, onions, cucumbers, green peppers, beets, kalamata olives, pepperoncinis and feta." }
+        ]
+      },
+      {
+        "title": "Pizza and More",
+        "items": [
+          { "name": "Cauliflower Crust", "price": "Same price as all 14 inch pizzas", "description": "Add your favorite lower calorie toppings." },
+          { "name": "Cauliflower Crust with Vegan Cheese", "price": "Same price as all 14 inch vegan pizzas", "description": "Add your favorite lower calorie toppings." },
+          { "name": "Grilled Chicken Caesar Wrap", "price": "", "description": "Romaine, shredded parmesan, Caesar dressing and grilled or blackened chicken." },
+          { "name": "The Greek Wrap", "price": "", "description": "Lettuce, tomatoes, onions, grilled chicken, Greek dressing, kalamata olives and feta." },
+          { "name": "Build a Lettuce Wrap Burger", "price": "", "description": "Choice of four regular toppings. Premium toppings $1.00 extra. Additional regular toppings $0.50 each." }
+        ]
+      }
+    ]
+  }
+}
