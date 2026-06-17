@@ -240,6 +240,13 @@ if (menuTabs) {
         if (!entry.isIntersecting) return;
         const id = entry.target.id;
         tabButtons.forEach((button) => button.classList.toggle("active", button.dataset.menuTarget === id));
+        // Center the active pill within the scroller (mobile single-row bar only).
+        const active = tabButtons.find((button) => button.dataset.menuTarget === id);
+        if (active && menuTabs.scrollWidth > menuTabs.clientWidth + 4) {
+          const bRect = active.getBoundingClientRect();
+          const cRect = menuTabs.getBoundingClientRect();
+          menuTabs.scrollBy({ left: (bRect.left + bRect.width / 2) - (cRect.left + cRect.width / 2), behavior: "smooth" });
+        }
       });
     }, { rootMargin: "-160px 0px -65% 0px", threshold: 0 });
     sections.forEach((section) => spy.observe(section));
