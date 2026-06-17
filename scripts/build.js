@@ -186,7 +186,7 @@ function homePage() {
       <section class="club-section">
         ${sectionHead("Slice of The Burg Rewards", "The first rule about Slice Club is,", "you tell everyone about it!")}
         <div class="club-card">
-          <img src="${attr(sliceClubImage)}" alt="Slice Club pizza illustration" width="450" height="253">
+          <img src="${attr(sliceClubImage)}" alt="Slice Club pizza illustration" width="450" height="360">
           <div>
             <ul>
               <li>Eat Pizza</li>
@@ -237,10 +237,10 @@ function homePage() {
         <div class="visit-grid">
           <form class="contact-form" data-contact-form>
             <h3>Contact Us</h3>
-            <label>Name<input name="name" autocomplete="name" placeholder="Name"></label>
-            <label>Phone<input name="phone" autocomplete="tel" placeholder="Phone"></label>
-            <label>Email<input name="email" autocomplete="email" type="email" placeholder="Email"></label>
-            <label>How can we serve you?<textarea name="message" rows="5" placeholder="How can we serve you?"></textarea></label>
+            <input name="name" autocomplete="name" placeholder="Name">
+            <input name="phone" autocomplete="tel" placeholder="Phone">
+            <input name="email" autocomplete="email" type="email" placeholder="Email">
+            <textarea name="message" rows="5" placeholder="How can we serve you?"></textarea>
             <button class="button" type="submit">Send</button>
             <p class="form-note">This prototype opens an email draft instead of submitting to a backend.</p>
           </form>
