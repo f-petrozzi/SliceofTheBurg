@@ -150,8 +150,17 @@ if (gallery) {
   }
 
   if (autoplay) {
-    gallery.addEventListener("pointerenter", pause);
-    gallery.addEventListener("pointerleave", resume);
+    // Pause only when hovering the ACTIVE slide image or the ACTIVE thumbnail —
+    // not the whole section. pointerenter/leave don't fire on inner child moves,
+    // so there's no flicker.
+    const hoverPause = (el) => {
+      el.addEventListener("pointerenter", () => { if (el.classList.contains("active")) pause(); });
+      el.addEventListener("pointerleave", () => { if (el.classList.contains("active")) resume(); });
+    };
+    slides.forEach(hoverPause);
+    thumbs.forEach(hoverPause);
+
+    // Keyboard users: pause while focus is anywhere in the carousel.
     gallery.addEventListener("focusin", pause);
     gallery.addEventListener("focusout", resume);
     document.addEventListener("visibilitychange", () => {

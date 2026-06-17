@@ -435,20 +435,15 @@ h3 {
 
 .club-card {
   display: grid;
-  grid-template-columns: minmax(0, 460px) minmax(200px, 320px);
+  grid-template-columns: 360px auto;
   align-items: center;
   justify-content: center;
-  gap: 48px;
-  text-align: center;
+  gap: 24px;
 }
 
 .club-card img {
   width: 100%;
-  max-width: 460px;
   height: auto;
-  aspect-ratio: 3 / 2;
-  object-fit: contain;
-  justify-self: end;
 }
 
 .club-copy {
@@ -487,7 +482,7 @@ h3 {
 .gift-card-inner img {
   width: 100%;
   max-width: 760px;
-  max-height: 440px;
+  max-height: 300px;
   margin-inline: auto;
   background: transparent;
   object-fit: contain;
@@ -938,12 +933,7 @@ textarea:focus {
   .visit-grid,
   .menu-list { grid-template-columns: 1fr; }
 
-  .club-card {
-    grid-template-columns: minmax(110px, 36vw) 1fr;
-    gap: 24px;
-  }
-
-  .club-card img { max-width: min(36vw, 260px); justify-self: center; }
+  .club-card { grid-template-columns: min(300px, 38vw) auto; }
 
   .gallery-slide {
     flex-basis: min(600px, calc(100vw - 100px));
@@ -960,7 +950,7 @@ textarea:focus {
     bottom: calc(16px + env(safe-area-inset-bottom));
     z-index: 40;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     gap: 12px;
   }
 }
@@ -992,17 +982,17 @@ textarea:focus {
 
   /* Club keeps the desktop 2-column layout on phones: image left, copy right */
   .club-card {
-    grid-template-columns: minmax(96px, 34vw) 1fr;
-    gap: 16px;
+    grid-template-columns: min(300px, 46vw) auto;
+    gap: 14px;
   }
 
-  .club-card img { max-width: min(34vw, 200px); }
-  .club-card ul { margin-bottom: 16px; font-size: .9rem; }
-  .club-copy .button { padding-inline: 18px; }
+  .club-card ul { margin-bottom: 16px; font-size: .8rem; }
+  .club-card li::before { margin-right: 6px; }
+  .club-copy .button { padding-inline: 16px; }
 
   /* Tighten the gift-card section so it matches the rest of the page rhythm */
-  .gift-card-section { padding-block: 36px; }
-  .gift-card-inner { gap: 16px; }
+  .gift-card-section { padding-block: 22px; }
+  .gift-card-inner { gap: 10px; }
 
   .hours div,
   .menu-item-head { display: block; }
