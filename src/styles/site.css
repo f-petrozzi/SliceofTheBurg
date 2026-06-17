@@ -399,23 +399,23 @@ h3 {
 }
 
 .gift-card-section {
-  padding: 64px 18px;
+  padding: 64px 18px 70px;
   background: var(--soft);
 }
 
 .gift-card-inner {
   display: grid;
-  grid-template-columns: minmax(260px, 460px) minmax(0, 1fr);
-  align-items: center;
-  gap: 42px;
-  width: min(980px, 100%);
+  gap: 24px;
+  width: min(1120px, 100%);
   margin: 0 auto;
+  text-align: center;
 }
 
 .gift-card-inner img {
   width: 100%;
-  border-radius: 8px;
-  box-shadow: var(--shadow);
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  background: #fff;
 }
 
 .gift-card-inner h2 {
@@ -423,6 +423,8 @@ h3 {
 }
 
 .gift-card-inner p:not(.kicker) {
+  max-width: 640px;
+  margin: 0 auto 20px;
   color: var(--muted);
 }
 
@@ -746,10 +748,6 @@ textarea:focus {
 
   .club-card {
     gap: 22px;
-    text-align: center;
-  }
-
-  .gift-card-inner {
     text-align: center;
   }
 

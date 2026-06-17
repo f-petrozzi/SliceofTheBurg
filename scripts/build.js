@@ -123,7 +123,7 @@ function homePage() {
     .filter((item) => assetExists(item.icon))
     .map((item) => `<a href="${attr(item.url)}" target="_blank" rel="noopener"><img src="${attr(item.icon)}" alt="${attr(item.label)}" width="32" height="32"></a>`)
     .join("");
-  const heroImage = assetExists("/assets/brand/hero-banner.png") ? "/assets/brand/hero-banner.png" : "/assets/hero-pizza-spread.png";
+  const heroImage = assetExists("/assets/brand/hero-banner.webp") ? "/assets/brand/hero-banner.webp" : "/assets/hero-pizza-spread.png";
   const galleryItems = gallery
     .filter((item) => assetExists(item.large))
     .map((item) => ({ ...item, thumb: assetExists(item.thumb) ? item.thumb : item.large }));
@@ -151,9 +151,10 @@ function homePage() {
   const faveThumbs = faves
     .map((item) => `<button type="button" data-src="${attr(item.large)}" data-alt="${attr(item.alt)}" data-title="${attr(item.title)}" aria-label="Show ${attr(item.title)}"><img src="${attr(item.thumb)}" alt=""></button>`)
     .join("");
-  const giftCardImage = assetExists("/assets/promos/gift-card.png")
-    ? `<img src="/assets/promos/gift-card.png" alt="Slice of The Burg gift card" width="640" height="420">`
+  const giftCardImage = assetExists("/assets/promos/gift-card.webp")
+    ? `<img src="/assets/promos/gift-card.webp" alt="Slice of The Burg gift card" width="640" height="420">`
     : "";
+  const sliceClubImage = assetExists("/assets/brand/slice-club.webp") ? "/assets/brand/slice-club.webp" : "/assets/slice-club-pizza.png";
 
   return `
     <main>
@@ -185,7 +186,7 @@ function homePage() {
       <section class="club-section">
         ${sectionHead("Slice of The Burg Rewards", "The first rule about Slice Club is,", "you tell everyone about it!")}
         <div class="club-card">
-          <img src="/assets/slice-club-pizza.png" alt="Slice Club pizza illustration" width="450" height="253">
+          <img src="${attr(sliceClubImage)}" alt="Slice Club pizza illustration" width="450" height="253">
           <div>
             <ul>
               <li>Eat Pizza</li>

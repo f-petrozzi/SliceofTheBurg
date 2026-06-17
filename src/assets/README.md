@@ -6,16 +6,17 @@ Put downloaded source images here, not in `dist/`.
 
 Each food item has two files:
 
-- `src/assets/food/large/<slug>.jpg` for the large carousel image.
-- `src/assets/food/thumb/<slug>.jpg` for the 70px thumbnail.
+- `src/assets/food/large/<slug>-large.webp` for the large carousel image.
+- `src/assets/food/thumb/<slug>-small.webp` for the 70px thumbnail.
 
-Use the slugs listed in `src/data/gallery.json`. If a downloaded file is PNG or WEBP, either rename/convert it to JPG or update the matching `large` and `thumb` paths in `src/data/gallery.json`.
+Use the paths listed in `src/data/gallery.json`.
 
 ## Brand and Promo Images
 
-- `src/assets/brand/hero-banner.png` replaces the current hero/banner image when present.
-- `src/assets/brand/tripadvisor.png` appears in the footer social/review links when present.
-- `src/assets/promos/gift-card.png` appears in the gift card section when present.
+- `src/assets/brand/hero-banner.webp` replaces the current hero/banner image when present.
+- `src/assets/brand/slice-club.webp` replaces the current Slice Club image when present.
+- `src/assets/brand/tripadvisor.webp` appears in the footer social/review links when present.
+- `src/assets/promos/gift-card.webp` appears in the gift card section when present.
 
 After adding or replacing assets, run:
 
