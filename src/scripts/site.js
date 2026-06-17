@@ -1,3 +1,6 @@
+const prefersReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+/* ---------- Mobile nav ---------- */
 document.querySelector(".nav-toggle")?.addEventListener("click", (event) => {
   const button = event.currentTarget;
   const nav = document.getElementById("mobile-nav");
@@ -6,23 +9,36 @@ document.querySelector(".nav-toggle")?.addEventListener("click", (event) => {
   nav?.classList.toggle("open", !open);
 });
 
+/* ---------- St. Pete Faves carousel ---------- */
 const gallery = document.querySelector("[data-gallery]");
 if (gallery) {
   const viewport = gallery.querySelector(".gallery-viewport");
   const track = gallery.querySelector(".gallery-track");
   const caption = gallery.querySelector(".gallery-caption");
+  const progressBar = gallery.querySelector(".gallery-progress i");
+  const thumbsTrack = gallery.querySelector(".gallery-thumbs");
   const thumbs = Array.from(gallery.querySelectorAll(".gallery-thumbs button"));
   const originalSlides = Array.from(gallery.querySelectorAll(".gallery-slide"));
   const slideCount = originalSlides.length;
+  const interval = Number(gallery.dataset.carInterval) || 5000;
+  const autoplay = !prefersReduced && slideCount > 1;
   let slides = originalSlides;
   let index = 0;
   let physicalIndex = 0;
+  let paused = false;
+
+  gallery.style.setProperty("--car-interval", `${interval}ms`);
+
+  const progressEl = gallery.querySelector(".gallery-progress");
+  if (!autoplay && progressEl) progressEl.style.display = "none";
 
   if (slideCount > 1) {
     const firstClone = originalSlides[0].cloneNode(true);
     const lastClone = originalSlides[slideCount - 1].cloneNode(true);
     firstClone.dataset.clone = "true";
     lastClone.dataset.clone = "true";
+    firstClone.setAttribute("aria-hidden", "true");
+    lastClone.setAttribute("aria-hidden", "true");
     track.insertBefore(lastClone, originalSlides[0]);
     track.appendChild(firstClone);
     slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
@@ -43,15 +59,49 @@ if (gallery) {
     }
   }
 
+  let timer = null;
+
+  function clearTimer() {
+    if (timer) {
+      clearTimeout(timer);
+      timer = null;
+    }
+  }
+
+  function scheduleNext() {
+    clearTimer();
+    if (!autoplay || paused) return;
+    timer = setTimeout(() => move(1), interval);
+  }
+
+  function restartProgress() {
+    if (!autoplay || !progressBar) return;
+    progressBar.classList.remove("run");
+    void progressBar.offsetWidth; // force reflow to restart the animation
+    progressBar.classList.add("run");
+    progressBar.classList.toggle("paused", paused);
+  }
+
+  function cycle() {
+    restartProgress();
+    scheduleNext();
+  }
+
   function updateState() {
     const thumb = thumbs[index];
-    caption.textContent = thumb.dataset.title;
+    if (caption && thumb) caption.textContent = thumb.dataset.title;
     slides.forEach((slide, slideIndex) => {
       slide.classList.toggle("active", slideIndex === physicalIndex);
       slide.classList.toggle("near", Math.abs(slideIndex - physicalIndex) === 1);
     });
     thumbs.forEach((button, buttonIndex) => button.classList.toggle("active", buttonIndex === index));
-    thumb.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
+    // Center the active thumbnail within its own strip only — never scroll the page.
+    if (thumbsTrack && thumb) {
+      const tRect = thumb.getBoundingClientRect();
+      const cRect = thumbsTrack.getBoundingClientRect();
+      const delta = (tRect.left + tRect.width / 2) - (cRect.left + cRect.width / 2);
+      thumbsTrack.scrollBy({ left: delta, behavior: "smooth" });
+    }
   }
 
   function goTo(nextIndex, animate = true) {
@@ -59,6 +109,7 @@ if (gallery) {
     physicalIndex = slideCount > 1 ? index + 1 : index;
     updateState();
     positionTrack(animate);
+    cycle();
   }
 
   function move(delta) {
@@ -67,6 +118,7 @@ if (gallery) {
     physicalIndex += delta;
     updateState();
     positionTrack(true);
+    cycle();
   }
 
   track.addEventListener("transitionend", () => {
@@ -82,6 +134,46 @@ if (gallery) {
     }
   });
 
+  function pause() {
+    if (paused) return;
+    paused = true;
+    clearTimer();
+    progressBar?.classList.add("paused");
+  }
+
+  function resume() {
+    if (!paused) return;
+    paused = false;
+    progressBar?.classList.remove("paused");
+    cycle();
+  }
+
+  if (autoplay) {
+    gallery.addEventListener("pointerenter", pause);
+    gallery.addEventListener("pointerleave", resume);
+    gallery.addEventListener("focusin", pause);
+    gallery.addEventListener("focusout", resume);
+    document.addEventListener("visibilitychange", () => {
+      if (document.hidden) pause();
+      else resume();
+    });
+  }
+
+  // Touch swipe on the main stage
+  const stage = gallery.querySelector(".gallery-stage");
+  let touchX = null;
+  stage?.addEventListener("touchstart", (event) => {
+    touchX = event.changedTouches[0].clientX;
+    pause();
+  }, { passive: true });
+  stage?.addEventListener("touchend", (event) => {
+    if (touchX === null) return;
+    const delta = event.changedTouches[0].clientX - touchX;
+    if (Math.abs(delta) > 40) move(delta < 0 ? 1 : -1);
+    touchX = null;
+    resume();
+  });
+
   gallery.querySelector(".gallery-prev")?.addEventListener("click", () => move(-1));
   gallery.querySelector(".gallery-next")?.addEventListener("click", () => move(1));
   gallery.querySelector(".gallery-thumb-prev")?.addEventListener("click", () => move(-1));
@@ -91,13 +183,51 @@ if (gallery) {
   goTo(0, false);
 }
 
-document.querySelector("[data-menu-tabs]")?.addEventListener("click", (event) => {
-  const button = event.target.closest("button");
-  if (!button) return;
-  document.querySelectorAll("[data-menu-tabs] button").forEach((tab) => tab.classList.toggle("active", tab === button));
-  document.getElementById(button.dataset.menuTarget)?.scrollIntoView({ behavior: "smooth", block: "start" });
-});
+/* ---------- Scroll reveal ---------- */
+const revealEls = document.querySelectorAll(".reveal");
+if (revealEls.length) {
+  if (prefersReduced || !("IntersectionObserver" in window)) {
+    revealEls.forEach((el) => el.classList.add("in-view"));
+  } else {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add("in-view");
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: "0px 0px -10% 0px", threshold: 0.08 });
+    revealEls.forEach((el) => revealObserver.observe(el));
+  }
+}
 
+/* ---------- Menu tabs: click-to-scroll + scrollspy ---------- */
+const menuTabs = document.querySelector("[data-menu-tabs]");
+if (menuTabs) {
+  menuTabs.addEventListener("click", (event) => {
+    const button = event.target.closest("button");
+    if (!button) return;
+    document.getElementById(button.dataset.menuTarget)?.scrollIntoView({ behavior: "smooth", block: "start" });
+  });
+
+  const tabButtons = Array.from(menuTabs.querySelectorAll("button"));
+  const sections = tabButtons
+    .map((button) => document.getElementById(button.dataset.menuTarget))
+    .filter(Boolean);
+
+  if ("IntersectionObserver" in window && sections.length) {
+    const spy = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        const id = entry.target.id;
+        tabButtons.forEach((button) => button.classList.toggle("active", button.dataset.menuTarget === id));
+      });
+    }, { rootMargin: "-160px 0px -65% 0px", threshold: 0 });
+    sections.forEach((section) => spy.observe(section));
+  }
+}
+
+/* ---------- Contact form -> mailto ---------- */
 document.querySelector("[data-contact-form]")?.addEventListener("submit", (event) => {
   event.preventDefault();
   const form = event.currentTarget;
