@@ -46,6 +46,7 @@ if (gallery) {
   }
 
   function positionTrack(animate = true) {
+    if (!viewport.offsetWidth) return; // not laid out yet — skip until it is
     const slide = slides[physicalIndex];
     const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0");
     const step = slide.offsetWidth + gap;
@@ -179,8 +180,17 @@ if (gallery) {
   gallery.querySelector(".gallery-thumb-prev")?.addEventListener("click", () => move(-1));
   gallery.querySelector(".gallery-thumb-next")?.addEventListener("click", () => move(1));
   thumbs.forEach((button, buttonIndex) => button.addEventListener("click", () => goTo(buttonIndex)));
-  window.addEventListener("resize", () => positionTrack(false));
-  goTo(0, false);
+
+  // Re-center whenever the layout can shift the measurements the track relies on:
+  // window resize, viewport size changes (scrollbars/fonts), full load, and font readiness.
+  const reposition = () => positionTrack(false);
+  window.addEventListener("resize", reposition);
+  if ("ResizeObserver" in window) new ResizeObserver(reposition).observe(viewport);
+  window.addEventListener("load", reposition);
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(reposition);
+
+  // Initial placement — defer to the next frame so first paint has settled.
+  requestAnimationFrame(() => goTo(0, false));
 }
 
 /* ---------- Scroll reveal ---------- */

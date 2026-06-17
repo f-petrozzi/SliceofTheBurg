@@ -32,6 +32,14 @@ function chevron(direction) {
   return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="${d}"></path></svg>`;
 }
 
+function phoneIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>`;
+}
+
+function orderIcon() {
+  return `<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 2 3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><path d="M3 6h18"></path><path d="M16 10a4 4 0 0 1-8 0"></path></svg>`;
+}
+
 function cleanDir(dir) {
   fs.rmSync(dir, { recursive: true, force: true });
   fs.mkdirSync(dir, { recursive: true });
@@ -107,15 +115,15 @@ function footer() {
       <p>${escapeHtml(site.address.street)}, ${escapeHtml(site.address.city)}, ${escapeHtml(site.address.state)} ${escapeHtml(site.address.zip)}<br>${escapeHtml(site.phoneDisplay)}</p>
       <nav class="footer-nav" aria-label="Footer">${links}</nav>
     </footer>
-    <div class="mobile-order-bar">
-      <a class="button button-outline" href="tel:${attr(site.phoneTel)}" aria-label="Call Slice of The Burg">Call</a>
-      <a class="button" href="${attr(site.orderUrl)}" target="_blank" rel="noopener">Order Online</a>
+    <div class="mobile-fab">
+      <a class="fab" href="tel:${attr(site.phoneTel)}" aria-label="Call Slice of The Burg">${phoneIcon()}</a>
+      <a class="fab" href="${attr(site.orderUrl)}" target="_blank" rel="noopener" aria-label="Order online">${orderIcon()}</a>
     </div>`;
 }
 
-function quote(index, dark = false) {
+function quote(index) {
   const review = site.reviews[index % site.reviews.length];
-  return `<aside class="quote-bar${dark ? " quote-dark" : ""}"><p>"${escapeHtml(review.quote)}", ${escapeHtml(review.by)}</p></aside>`;
+  return `<aside class="quote-bar"><p>"${escapeHtml(review.quote)}", ${escapeHtml(review.by)}</p></aside>`;
 }
 
 function sectionHead(kicker, title, text = "") {
@@ -161,7 +169,7 @@ function homePage(page) {
   const faveSlides = faves
     .map((item, index) => `
             <figure class="gallery-slide" data-index="${index}">
-              <img src="${attr(item.large)}" alt="${attr(item.alt)}" width="600" height="600" loading="${index === 0 ? "eager" : "lazy"}" decoding="async">
+              <img src="${attr(item.large)}" alt="${attr(item.alt)}" width="600" height="600" loading="eager" decoding="async">
             </figure>`)
     .join("");
   const faveThumbs = faves
@@ -288,7 +296,7 @@ function homePage(page) {
         </div>
       </section>
 
-      ${quote(3, true)}
+      ${quote(3)}
     </main>`;
 }
 

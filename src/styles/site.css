@@ -145,7 +145,7 @@ a:hover { color: var(--red-dark); }
   margin: 0 auto;
 }
 
-.logo-link img { width: 118px; height: auto; }
+.logo-link img { width: 152px; height: auto; }
 
 .desktop-nav { display: flex; justify-content: center; gap: 20px; }
 
@@ -230,8 +230,12 @@ a:hover { color: var(--red-dark); }
 
 .nav-toggle {
   display: none;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
   width: 44px;
   height: 44px;
+  padding: 0 10px;
   border: 0;
   border-radius: 8px;
   background: transparent;
@@ -240,9 +244,9 @@ a:hover { color: var(--red-dark); }
 
 .nav-toggle span:not(.sr-only) {
   display: block;
-  width: 22px;
+  width: 100%;
   height: 2px;
-  margin: 5px auto;
+  border-radius: 2px;
   background: var(--ink);
   transition: transform .2s var(--ease-out), opacity .2s var(--ease-out);
 }
@@ -252,18 +256,35 @@ a:hover { color: var(--red-dark); }
 .nav-toggle[aria-expanded="true"] span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
 
 .mobile-nav {
-  display: none;
-  width: min(var(--container-wide), calc(100% - var(--gutter) * 2));
-  margin: 0 auto;
-  padding: 10px 0 18px;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  z-index: 29;
+  display: grid;
+  gap: 2px;
+  padding: 6px var(--gutter) 18px;
+  background: rgba(255, 255, 255, .98);
+  backdrop-filter: saturate(140%) blur(10px);
   border-top: 1px solid var(--line);
+  box-shadow: 0 18px 28px rgba(0, 0, 0, .14);
+  transform: translateY(-16px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none;
+  transition: transform .28s var(--ease-out), opacity .28s var(--ease-out), visibility .28s;
 }
 
-.mobile-nav.open { display: grid; gap: 10px; }
+.mobile-nav.open {
+  transform: translateY(0);
+  opacity: 1;
+  visibility: visible;
+  pointer-events: auto;
+}
 
-.mobile-nav a { padding: 12px 2px; border-bottom: 1px solid var(--line); }
+.mobile-nav a { padding: 13px 2px; border-bottom: 1px solid var(--line); }
 
-.mobile-order { display: inline-flex; margin-top: 6px; }
+.mobile-order { display: inline-flex; margin-top: 12px; }
 
 /* ---------- Typography ---------- */
 
@@ -384,8 +405,6 @@ h3 {
   font-style: italic;
   font-size: clamp(1.05rem, 2.2vw, 1.4rem);
 }
-
-.quote-dark { background: var(--ink); }
 
 /* ---------- Section heads ---------- */
 
@@ -672,22 +691,22 @@ h3 {
 
 .connect { text-align: center; }
 
-.social-links { display: flex; justify-content: center; gap: 12px; }
+.social-links { display: flex; justify-content: center; gap: 14px; }
 
 .social-links a {
   display: inline-grid;
   place-items: center;
-  width: 46px;
-  height: 46px;
   border-radius: 999px;
-  background: #fff;
-  border: 1px solid var(--line);
-  box-shadow: var(--shadow-sm);
-  transition: transform .18s var(--ease-out), box-shadow .18s ease;
+  filter: drop-shadow(0 2px 5px rgba(0, 0, 0, .18));
+  transition: transform .18s var(--ease-out), filter .18s ease;
 }
 
-.social-links a:hover { transform: translateY(-3px); box-shadow: var(--shadow); }
-.social-links img { width: 24px; height: 24px; }
+.social-links a:hover {
+  transform: translateY(-3px) scale(1.05);
+  filter: drop-shadow(0 5px 10px rgba(0, 0, 0, .25));
+}
+
+.social-links img { width: 48px; height: 48px; }
 
 /* ---------- Visit ---------- */
 
@@ -840,24 +859,33 @@ textarea:focus {
 
 .site-footer p { margin: 14px 0 0; color: var(--muted); font-size: .82rem; }
 
-/* ---------- Mobile sticky order bar ---------- */
+/* ---------- Mobile floating action buttons ---------- */
 
-.mobile-order-bar {
-  position: fixed;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  z-index: 40;
-  display: none;
-  gap: 12px;
-  padding: 10px 14px calc(10px + env(safe-area-inset-bottom));
-  background: rgba(255, 255, 255, .96);
-  backdrop-filter: blur(8px);
-  border-top: 1px solid var(--line);
-  box-shadow: 0 -6px 20px rgba(0, 0, 0, .08);
+.mobile-fab { display: none; }
+
+.fab {
+  display: inline-grid;
+  place-items: center;
+  width: 54px;
+  height: 54px;
+  border-radius: 999px;
+  background: transparent;
+  border: 2px solid var(--red);
+  color: var(--red);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, .28);
+  -webkit-backdrop-filter: blur(3px);
+  backdrop-filter: blur(3px);
+  transition: background .18s ease, color .18s ease, transform .12s ease;
 }
 
-.mobile-order-bar .button { flex: 1; }
+.fab svg {
+  width: 24px;
+  height: 24px;
+  filter: drop-shadow(0 1px 2px rgba(0, 0, 0, .35));
+}
+
+.fab:hover { background: var(--red); color: #fff; }
+.fab:active { transform: scale(.94); }
 
 /* ---------- Scroll reveal ---------- */
 
@@ -902,23 +930,20 @@ textarea:focus {
   .desktop-nav,
   .order-button { display: none; }
 
-  .nav-toggle { display: block; justify-self: end; }
+  .nav-toggle { display: flex; justify-self: end; }
 
-  .logo-link img { width: 100px; }
+  .logo-link img { width: 132px; }
 
   .gift-card-inner,
   .visit-grid,
   .menu-list { grid-template-columns: 1fr; }
 
   .club-card {
-    grid-template-columns: minmax(120px, 40vw) minmax(150px, 1fr);
-    gap: 28px;
-    text-align: center;
+    grid-template-columns: minmax(110px, 36vw) 1fr;
+    gap: 24px;
   }
 
-  .club-card img { max-width: min(40vw, 280px); justify-self: center; }
-  .club-copy { align-items: center; }
-  .club-card ul { text-align: center; }
+  .club-card img { max-width: min(36vw, 260px); justify-self: center; }
 
   .gallery-slide {
     flex-basis: min(600px, calc(100vw - 100px));
@@ -929,9 +954,15 @@ textarea:focus {
   .gallery-prev { left: 12px; }
   .gallery-next { right: 12px; }
 
-  .mobile-order-bar { display: flex; }
-
-  body { padding-bottom: 72px; }
+  .mobile-fab {
+    position: fixed;
+    right: 14px;
+    bottom: calc(16px + env(safe-area-inset-bottom));
+    z-index: 40;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
 }
 
 @media (max-width: 560px) {
@@ -959,13 +990,19 @@ textarea:focus {
 
   .gallery-thumbs button { width: 68px; height: 52px; }
 
+  /* Club keeps the desktop 2-column layout on phones: image left, copy right */
   .club-card {
-    grid-template-columns: 1fr;
-    gap: 18px;
+    grid-template-columns: minmax(96px, 34vw) 1fr;
+    gap: 16px;
   }
 
-  .club-card img { max-width: 200px; }
-  .club-card ul { font-size: .95rem; }
+  .club-card img { max-width: min(34vw, 200px); }
+  .club-card ul { margin-bottom: 16px; font-size: .9rem; }
+  .club-copy .button { padding-inline: 18px; }
+
+  /* Tighten the gift-card section so it matches the rest of the page rhythm */
+  .gift-card-section { padding-block: 36px; }
+  .gift-card-inner { gap: 16px; }
 
   .hours div,
   .menu-item-head { display: block; }
