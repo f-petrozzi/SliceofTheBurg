@@ -8,23 +8,38 @@ document.querySelector(".nav-toggle")?.addEventListener("click", (event) => {
 
 const gallery = document.querySelector("[data-gallery]");
 if (gallery) {
-  const image = gallery.querySelector(".gallery-stage img");
+  const viewport = gallery.querySelector(".gallery-viewport");
+  const track = gallery.querySelector(".gallery-track");
+  const slides = Array.from(gallery.querySelectorAll(".gallery-slide"));
   const caption = gallery.querySelector(".gallery-caption");
   const thumbs = Array.from(gallery.querySelectorAll(".gallery-thumbs button"));
   let index = 0;
 
   function show(nextIndex) {
-    index = (nextIndex + thumbs.length) % thumbs.length;
+    index = (nextIndex + slides.length) % slides.length;
     const thumb = thumbs[index];
-    image.src = thumb.dataset.src;
-    image.alt = thumb.dataset.alt;
     caption.textContent = thumb.dataset.title || thumb.dataset.alt;
+    slides.forEach((slide, slideIndex) => {
+      const distance = Math.min(
+        Math.abs(slideIndex - index),
+        slides.length - Math.abs(slideIndex - index)
+      );
+      slide.classList.toggle("active", slideIndex === index);
+      slide.classList.toggle("near", distance === 1);
+    });
     thumbs.forEach((button, buttonIndex) => button.classList.toggle("active", buttonIndex === index));
+    const slide = slides[index];
+    const gap = Number.parseFloat(getComputedStyle(track).columnGap || getComputedStyle(track).gap || "0");
+    const step = slide.offsetWidth + gap;
+    const offset = (viewport.offsetWidth / 2) - (slide.offsetWidth / 2) - (index * step);
+    track.style.transform = `translateX(${offset}px)`;
+    thumb.scrollIntoView({ block: "nearest", inline: "center", behavior: "smooth" });
   }
 
   gallery.querySelector(".gallery-prev")?.addEventListener("click", () => show(index - 1));
   gallery.querySelector(".gallery-next")?.addEventListener("click", () => show(index + 1));
   thumbs.forEach((button, buttonIndex) => button.addEventListener("click", () => show(buttonIndex)));
+  window.addEventListener("resize", () => show(index));
   show(0);
 }
 

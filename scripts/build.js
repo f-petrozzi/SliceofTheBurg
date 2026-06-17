@@ -148,8 +148,14 @@ function homePage() {
     }
   ];
   const firstFave = faves[0];
+  const faveSlides = faves
+    .map((item, index) => `
+            <figure class="gallery-slide" data-index="${index}">
+              <img src="${attr(item.large)}" alt="${attr(item.alt)}">
+            </figure>`)
+    .join("");
   const faveThumbs = faves
-    .map((item) => `<button type="button" data-src="${attr(item.large)}" data-alt="${attr(item.alt)}" data-title="${attr(item.title)}" aria-label="Show ${attr(item.title)}"><img src="${attr(item.thumb)}" alt=""></button>`)
+    .map((item, index) => `<button type="button" data-index="${index}" data-title="${attr(item.title)}" aria-label="Show ${attr(item.title)}"><img src="${attr(item.thumb)}" alt=""></button>`)
     .join("");
   const giftCardImage = assetExists("/assets/promos/gift-card.webp")
     ? `<img src="/assets/promos/gift-card.webp" alt="Slice of The Burg gift card" width="640" height="420">`
@@ -179,8 +185,7 @@ function homePage() {
       ${quote(0)}
 
       <section class="statement">
-        <p class="quote-mark">"</p>
-        <h2>Keeping St. Pete weird, fed, and extra cheesy.</h2>
+        <h2><span aria-hidden="true">&ldquo;</span>Keeping St. Pete weird, fed, and extra cheesy.<span aria-hidden="true">&rdquo;</span></h2>
       </section>
 
       <section class="club-section">
@@ -193,8 +198,8 @@ function homePage() {
               <li>Earn Points</li>
               <li>Get Cool Rewards</li>
             </ul>
-            <a class="button button-dark" href="${attr(site.rewardsUrl)}" target="_blank" rel="noopener">Join The Club</a>
           </div>
+          <a class="button button-dark" href="${attr(site.rewardsUrl)}" target="_blank" rel="noopener">Join The Club</a>
         </div>
       </section>
 
@@ -216,7 +221,11 @@ function homePage() {
         ${sectionHead("", "St. Pete Faves")}
         <div class="gallery-stage">
           <button type="button" class="gallery-prev" aria-label="Previous favorite">&#8249;</button>
-          <img src="${attr(firstFave.large)}" alt="${attr(firstFave.alt)}">
+          <div class="gallery-viewport">
+            <div class="gallery-track">
+              ${faveSlides}
+            </div>
+          </div>
           <button type="button" class="gallery-next" aria-label="Next favorite">&#8250;</button>
         </div>
         <p class="gallery-caption">${escapeHtml(firstFave.title)}</p>
