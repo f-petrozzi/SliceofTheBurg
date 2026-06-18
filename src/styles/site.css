@@ -1016,7 +1016,7 @@ textarea:focus {
 @media (max-width: 560px) {
   body { font-size: 15px; }
 
-  .hero { align-items: end; min-height: 70vh; padding: 28px var(--gutter); }
+  .hero { align-items: start; min-height: 56vh; padding: 58px var(--gutter) 28px; }
   .hero-panel { padding: 28px 24px 32px; }
 
   .gallery-prev,
