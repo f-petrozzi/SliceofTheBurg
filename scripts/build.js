@@ -123,7 +123,7 @@ function footer() {
 
 function quote(index) {
   const review = site.reviews[index % site.reviews.length];
-  return `<aside class="quote-bar"><p>"${escapeHtml(review.quote)}", ${escapeHtml(review.by)}</p></aside>`;
+  return `<aside class="quote-bar"><blockquote><p class="quote-text">"${escapeHtml(review.quote)}"</p><cite class="quote-by">&mdash; ${escapeHtml(review.by)}</cite></blockquote></aside>`;
 }
 
 function sectionHead(kicker, title, text = "") {
@@ -184,6 +184,7 @@ function homePage(page) {
     <main id="main">
       <section class="hero" aria-label="St. Pete's favorite pizza">
         <img class="hero-image" src="${attr(heroImage)}" alt="Pizza, salad and appetizers from Slice of The Burg" width="1600" height="900" fetchpriority="high" decoding="async">
+        <p class="hero-accent">Fresh out the oven!</p>
         <div class="hero-panel">
           <p class="hero-phone">${escapeHtml(site.phoneDisplay)}</p>
           <h1>${escapeHtml(page.heading)}</h1>
@@ -449,7 +450,7 @@ function render(page) {
   <link rel="apple-touch-icon" href="/assets/slice-tab.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Bitter:ital,wght@0,400;1,400&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Caveat:wght@700&family=DM+Sans:opsz,wght@9..40,400;9..40,600;9..40,700&family=Bitter:ital,wght@0,400;1,400&display=swap">
   <link rel="stylesheet" href="/styles/site.css">
   ${structuredData(page)}
 </head>
